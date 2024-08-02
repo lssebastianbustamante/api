@@ -1,5 +1,4 @@
-import { Battle } from 'src/battle/entity/battle.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Pokemon {
@@ -23,7 +22,4 @@ export class Pokemon {
 
   @Column({ name: 'imageUrl', length: 70, nullable: false })
   imageUrl: string;
-
-  @OneToMany(() => Battle, (battle) => battle.winner)
-  battles: Battle[];
 }

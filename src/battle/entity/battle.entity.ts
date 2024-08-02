@@ -1,10 +1,15 @@
-import { Pokemon } from 'src/pokemon/entities/pokemon.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Battle {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Column()
+  pokemonUno: string;
+
+  @Column()
+  pokemonDos: string;
 
   @Column()
   pokemonWinner: string;
@@ -14,7 +19,4 @@ export class Battle {
 
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
   createAt: Date;
-
-  @ManyToOne(() => Pokemon, (pokemon) => pokemon.battles)
-  winner: Pokemon;
 }

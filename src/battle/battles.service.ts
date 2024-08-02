@@ -12,19 +12,17 @@ export class BattlesService {
     private pokemosService: PokemonService,
   ) {}
 
-  async getBattles() {
-    return await this.battleRepository.find({ relations: ['winner'] });
-  }
-
   async createRegister(register: CreateRegisterDto) {
     const pokemonFound = await this.pokemosService.getPokemon(
       register.pokemonId,
     );
-
     if (!pokemonFound)
       return new HttpException('Pokeon not found', HttpStatus.NOT_FOUND);
-
     const newRegister = this.battleRepository.create(register);
     return this.battleRepository.save(newRegister);
+  }
+
+  getBattles() {
+    return this.battleRepository.find();
   }
 }

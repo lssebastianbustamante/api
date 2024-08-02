@@ -23,7 +23,6 @@ export class PokemonService {
 
     if (!pokemonFound)
       return new HttpException('Pokeon not found', HttpStatus.NOT_FOUND);
-
     return pokemonFound;
   }
 
@@ -127,10 +126,7 @@ export class PokemonService {
 
       [attacker, defender] = [defender, attacker];
 
-      return {
-        id: attacker.id,
-        name: attacker.name,
-      };
+      return attacker;
     }
   }
 }
